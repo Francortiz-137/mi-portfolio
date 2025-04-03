@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Sun, Moon, X } from 'lucide-react';
-import LanguageSwitcher from './LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 import './MobileMenu.css';
 
 interface MobileMenuProps {
@@ -12,6 +12,12 @@ interface MobileMenuProps {
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, toggleTheme }) => {
+  const { i18n } = useTranslation();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
+
   return (
     <div className={`menu-mobile ${isOpen ? 'open' : ''}`}>
       <button className="close-button" onClick={onClose}>
@@ -30,7 +36,21 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, to
           <Link to="/save-files" onClick={onClose}>Save Files</Link>
         </nav>
         <div className="menu-buttons">
-          <LanguageSwitcher color="white" />
+          <div className="language-buttons">
+            <button 
+              onClick={() => changeLanguage('en')}
+              className={`language-button ${i18n.language === 'en' ? 'active' : ''}`}
+            >
+              EN
+            </button>
+            <span className="language-separator">|</span>
+            <button 
+              onClick={() => changeLanguage('es')}
+              className={`language-button ${i18n.language === 'es' ? 'active' : ''}`}
+            >
+              ESP
+            </button>
+          </div>
           <button onClick={toggleTheme} className="theme-button">
             {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
           </button>
