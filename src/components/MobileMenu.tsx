@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { X, Sun, Moon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
@@ -15,19 +15,27 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, toggleTheme }) => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const [isNavigating, setIsNavigating] = useState(false);
 
   const toggleLanguage = () => {
     i18n.changeLanguage(i18n.language === 'en' ? 'es' : 'en');
   };
 
   const handleNavigation = (path: string) => {
-    
+    setIsNavigating(true);
     navigate(path);
-    onClose();
+    // Iniciar la animación de cierre después de un pequeño delay
+    setTimeout(() => {
+      onClose();
+      // Resetear el estado de navegación después de que la animación termine
+      setTimeout(() => {
+        setIsNavigating(false);
+      }, 1000);
+    }, 100);
   };
 
   return (
-    <MenuAnimation isOpen={isOpen}>
+    <MenuAnimation isOpen={isOpen && !isNavigating}>
       <div className="menu-content">
         <button className="close-button" onClick={onClose}>
           <X size={24} />
@@ -36,7 +44,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, to
         <div className="logo-mobile">FrancOrtiz</div>
         
         <nav className="nav-menu">
-          <button onClick={onClose} className="nav-link">
+          <button onClick={() => handleNavigation('/')} className="nav-link">
             {t('nav.home')}
           </button>
           <button onClick={() => handleNavigation('/about')} className="nav-link">
