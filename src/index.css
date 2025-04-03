@@ -578,7 +578,7 @@ nav button:focus-visible {
   background-color: transparent;
 }
 
-.menu-mobile{
+.menu-mobile {
   background-color: #4a90e2;
   position: fixed;
   top: 0;
@@ -594,8 +594,16 @@ nav button:focus-visible {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.menu-mobile div{
+.dark .menu-mobile {
+  background-color: #1a1a1a;
+}
+
+.menu-mobile div {
   background-color: #4a90e2;
+}
+
+.dark .menu-mobile div {
+  background-color: #1a1a1a;
 }
 
 /* Animación para los elementos del menú */
