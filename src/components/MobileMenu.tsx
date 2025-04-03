@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Sun, Moon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link, useNavigate } from 'react-router-dom';
 import MenuAnimation from './MenuAnimation';
 import './MobileMenu.css';
 
@@ -13,9 +14,16 @@ interface MobileMenuProps {
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, toggleTheme }) => {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
 
   const toggleLanguage = () => {
     i18n.changeLanguage(i18n.language === 'en' ? 'es' : 'en');
+  };
+
+  const handleNavigation = (path: string) => {
+    
+    navigate(path);
+    onClose();
   };
 
   return (
@@ -28,10 +36,21 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, to
         <div className="logo-mobile">FrancOrtiz</div>
         
         <nav className="nav-menu">
-          <a href="#home" onClick={onClose}>{t('nav.home')}</a>
-          <a href="#about" onClick={onClose}>{t('nav.about')}</a>
-          <a href="#projects" onClick={onClose}>{t('nav.projects')}</a>
-          <a href="#contact" onClick={onClose}>{t('nav.contact')}</a>
+          <button onClick={onClose} className="nav-link">
+            {t('nav.home')}
+          </button>
+          <button onClick={() => handleNavigation('/about')} className="nav-link">
+            {t('nav.about')}
+          </button>
+          <button onClick={() => handleNavigation('/projects')} className="nav-link">
+            {t('nav.projects')}
+          </button>
+          <button onClick={() => handleNavigation('/skills')} className="nav-link">
+            {t('nav.skills')}
+          </button>
+          <button onClick={() => handleNavigation('/contact')} className="nav-link">
+            {t('nav.contact')}
+          </button>
         </nav>
 
         <div className="menu-buttons">
