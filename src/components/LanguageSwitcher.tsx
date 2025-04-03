@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const LanguageSwitcher: React.FC = () => {
+interface LanguageSwitcherProps {
+  color?: string;
+}
+
+const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ color }) => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -10,28 +14,29 @@ const LanguageSwitcher: React.FC = () => {
     setIsOpen(false);
   };
 
-  const currentLanguage = i18n.language;
-  const otherLanguage = currentLanguage === 'en' ? 'es' : 'en';
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <div className="relative">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="px-3 py-1 text-sm rounded-md bg-primary text-white w-12 flex items-center justify-between"
-      >
-        {currentLanguage.toUpperCase()}
-        <span className="ml-1">▼</span>
+    <div className="language-switcher">
+      <button onClick={toggleDropdown} style={{ color: color || 'inherit' }}>
+        {i18n.language.toUpperCase()}
       </button>
-      {isOpen && (
-        <div className="absolute top-full left-0 mt-1">
-          <button
-            onClick={() => changeLanguage(otherLanguage)}
-            className="w-12 px-3 py-1 text-sm rounded-md bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-          >
-            {otherLanguage.toUpperCase()}
-          </button>
-        </div>
-      )}
+      <div className={`dropdown ${isOpen ? 'show' : ''}`}>
+        <button 
+          onClick={() => changeLanguage('es')}
+          style={{ color: color || 'inherit' }}
+        >
+          ES
+        </button>
+        <button 
+          onClick={() => changeLanguage('en')}
+          style={{ color: color || 'inherit' }}
+        >
+          EN
+        </button>
+      </div>
     </div>
   );
 };

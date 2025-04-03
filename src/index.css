@@ -373,16 +373,182 @@ p {
 }
 
 /* Mobile menu styles */
-.mobile-menu {
-  font-family: 'Space Grotesk', sans-serif;
+.menu-mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #4a90e2;
   z-index: 50;
-  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
 }
 
-.mobile-menu a {
-  font-family: 'Space Grotesk', sans-serif;
-  display: block;
+.dark .menu-mobile {
+  background-color: #1a1a1a;
+}
+
+.menu-mobile.menu-open {
+  transform: translateX(0);
+}
+
+.menu-mobile .menu-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  padding-top: 8rem;
+}
+
+
+.menu-mobile .nav-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.menu-mobile .nav-menu a {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 500;
+  text-align: center;
   transition: all 0.3s ease;
+  font-family: 'Space Grotesk', sans-serif;
+  width: 100%;
+}
+
+.menu-mobile .menu-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .menu-mobile .menu-content {
+    width: 33%;
+    margin-left: auto;
+    align-items: flex-start;
+  }
+}
+
+.menu-mobile .logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4834d4;
+  text-decoration: none;
+  margin-bottom: 2rem;
+}
+
+.dark .menu-mobile .logo {
+  color: #4a90e2;
+}
+
+.menu-mobile .nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+}
+
+.menu-mobile .nav-menu a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.menu-mobile .nav-menu a:hover {
+  transform: translateY(-3px);
+}
+
+.menu-mobile .nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.menu-mobile .nav-menu a:hover::after {
+  transform: scaleX(1);
+}
+
+.menu-close-button {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.menu-close-button:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.menu-close-button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.menu-mobile .menu-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.menu-mobile .menu-buttons button {
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-mobile .menu-buttons button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.menu-mobile .menu-buttons button svg {
+  color: white;
+}
+
+.menu-mobile .menu-buttons .language-switcher {
+  color: white;
+}
+
+.menu-mobile .menu-buttons .language-switcher button {
+  color: white;
+}
+
+.menu-mobile .menu-buttons .language-switcher button:hover {
+  color: white;
+  opacity: 0.8;
 }
 
 .social-link {
@@ -579,133 +745,6 @@ nav button:focus-visible {
   background-color: transparent;
 }
 
-.menu-mobile {
-  background-color: #4a90e2;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  transform: translateX(0);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.dark .menu-mobile {
-  background-color: #1a1a1a;
-}
-
-.menu-mobile div {
-  background-color: #4a90e2;
-}
-
-.dark .menu-mobile div {
-  background-color: #1a1a1a;
-}
-
-/* Animación para los elementos del menú */
-.menu-mobile .nav-menu a {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  transition-delay: calc(var(--index) * 0.05s);
-}
-
-.menu-open .nav-menu a {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.menu-closing .nav-menu a {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition-delay: calc((5 - var(--index)) * 0.03s);
-}
-
-.menu-mobile .text-center,
-.menu-mobile .flex.justify-center {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.menu-open .text-center {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.1s;
-}
-
-.menu-open .flex.justify-center {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.3s;
-}
-
-.menu-closing .text-center {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition-delay: 0.2s;
-}
-
-.menu-closing .flex.justify-center {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition-delay: 0.05s;
-}
-
-.nav-menu{
-  color: #ffffff;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 500;
-  font-size: 4rem;
-  text-align: center;
-  padding: 0.75rem 1rem;
-  transition: all 0.3s ease;
-}
-
-.nav-menu a {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 4rem;
-  font-weight: 700;
-  color: #ffffff;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  position: relative;
-  padding: 0.25rem 0.5rem;
-  letter-spacing: -0.02em;
-}
-
-.nav-menu a:hover {
-  color: #ffffff;
-  transform: translateY(-3px) scale(1.05);
-}
-
-.nav-menu a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: #ffffff;
-  transform: scaleX(0);
-  transition: transform 0.2s ease;
-  transform-origin: center;
-}
-
-.nav-menu a:hover::after {
-  transform: scaleX(1);
-}
-
-footer .footer-social {
-  gap: 2rem !important;
-  justify-content: center;
-}
-
 .logo-mobile {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 4.5rem !important;
@@ -714,11 +753,13 @@ footer .footer-social {
   letter-spacing: -0.03em;
   transition: all 0.3s ease;
   line-height: 1 !important;
+  margin-bottom: 2rem;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .logo-mobile {
-    font-size: 6rem !important;
+    font-size: 5rem !important;
+    text-align: left;
   }
 }
 
@@ -760,10 +801,24 @@ footer .footer-social {
 }
 
 .mobile-menu-footer {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.3s ease;
-  width: 100%;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: transparent;
+  z-index: 10;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-footer {
+    width: 33.33%;
+  }
 }
 
 .menu-open .mobile-menu-footer {
@@ -778,30 +833,49 @@ footer .footer-social {
   transition-delay: 0.1s;
 }
 
-/* Ajustes específicos para el footer dentro del menú móvil */
 .mobile-menu-footer footer {
-  padding: 1rem 0;
-  background-color: transparent !important;
+  background: transparent !important;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .mobile-menu-footer .footer-content {
-  margin: 0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.mobile-menu-footer p,
-.mobile-menu-footer a {
-  color: white !important;
+.mobile-menu-footer .footer-content a {
+  color: white;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
-.mobile-menu-footer svg {
-  width: 24px !important;
-  height: 24px !important;
-  color: white !important;
+.mobile-menu-footer .footer-content a:hover {
+  opacity: 1;
 }
 
 .mobile-menu-footer .footer-social {
-  gap: 2rem !important;
+  display: flex;
+  gap: 1rem;
   justify-content: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.mobile-menu-footer .footer-social a {
+  color: white;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-footer .footer-social a:hover {
+  opacity: 1;
+  transform: translateY(-2px);
 }
 
 /* Welcome Animation Styles */
@@ -1243,12 +1317,15 @@ footer .footer-social {
   100% { left: 100%; }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) {
   .menu-mobile .nav-menu {
     width: 100%;
     margin-left: 0;
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  .menu-mobile .nav-menu a{
+    text-align: left;
   }
 
   .menu-mobile .mobile-menu-footer {
@@ -1262,7 +1339,6 @@ footer .footer-social {
 @media (min-width: 1024px) {
   .menu-mobile .nav-menu {
     width: 66.666667%;
-    margin-left: auto;
     padding-left: 2rem;
     padding-right: 2rem;
   }
@@ -1275,8 +1351,8 @@ footer .footer-social {
   }
 
   .menu-mobile .logo-mobile {
-    margin-left: auto;
-    width: 66.666667%;
+    margin-left: 0;
+    width: 100%;
     padding-left: 2rem;
     padding-right: 2rem;
   }
@@ -1330,4 +1406,72 @@ footer .footer-social {
   font-family: 'Space Grotesk', sans-serif;
   text-align: center;
   margin: 4rem 0;
+}
+
+.language-switcher {
+  position: relative;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.language-switcher button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem;
+  color: #666666 !important;
+  transition: all 0.3s ease;
+}
+
+.dark .language-switcher button {
+  color: #e0e0e0 !important;
+}
+
+.language-switcher button:hover {
+  opacity: 0.8;
+}
+
+.language-switcher .dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  display: none;
+  z-index: 50;
+  min-width: 60px;
+}
+
+.dark .language-switcher .dropdown {
+  background-color: #1a1a1a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.language-switcher .dropdown.show {
+  display: block;
+}
+
+.language-switcher .dropdown button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  color: #666666 !important;
+}
+
+.dark .language-switcher .dropdown button {
+  color: #e0e0e0 !important;
+}
+
+.language-switcher .dropdown button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark .language-switcher .dropdown button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }

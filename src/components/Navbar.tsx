@@ -1,9 +1,9 @@
 import React from "react";
 import { Menu, Sun, Moon } from "lucide-react";
-import MobileMenu from "./MobileMenu";
 import { useTheme } from "../context/ThemeContext";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import LanguageSwitcher from './LanguageSwitcher';
+import MobileMenu from './MobileMenu';
 
 interface NavbarProps {
   isMenuOpen: boolean;
@@ -15,15 +15,12 @@ const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
+    document.body.style.overflow = !isMenuOpen ? 'hidden' : 'auto';
   };
 
   return (
     <>
-      <nav className={`navbar ${isMenuOpen ? 'invisible' : 'visible'}`}>
+      <nav className={`navbar ${isMenuOpen ? 'hidden' : 'block'}`}>
         <div className="navbar-container">
           <div className="navbar-content">
             {/* Menu Button */}
@@ -37,8 +34,7 @@ const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
 
             <div className="flex items-center gap-2 ml-auto">
               <LanguageSwitcher />
-              {/* Theme Toggle */}
-              <button 
+              <button
                 onClick={toggleTheme} 
                 className="navbar-theme-button"
               >
@@ -52,10 +48,9 @@ const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
         </div>
       </nav>
 
-      {/* Mobile Menu Component */}
       <MobileMenu 
-        isOpen={isMenuOpen} 
-        onClose={closeMenu} 
+        isOpen={isMenuOpen}
+        onClose={toggleMenu}
         isDarkMode={theme === 'dark'}
         toggleTheme={toggleTheme}
       />

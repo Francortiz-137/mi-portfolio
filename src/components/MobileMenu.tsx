@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { X, Sun, Moon } from "lucide-react";
+import { Link } from "react-router-dom";
+import LanguageSwitcher from './LanguageSwitcher';
 import Footer from "./Footer";
 
 interface MobileMenuProps {
@@ -40,85 +42,53 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, to
         onClick={handleClose}
       />
       
-      {/* Blue menu panel */}
-      <div
-        className={`menu-mobile z-50 ${
-          isOpen ? "translate-x-0 menu-open" : "-translate-x-full"
-        } ${isClosing ? "menu-closing" : ""}`}
-      >
-        {/* Navbar area */}
-        <div className="flex justify-between items-center h-16 px-4">
-          <button
-            onClick={handleClose}
-            className="p-2 rounded-md bg-transparent hover:bg-blue-400/30 dark:hover:bg-blue-800/30 transition-colors"
-            aria-label="Close menu"
-          >
-            <X className="w-7 h-7 nav-icon-mobile" />
-          </button>
+        {/* Blue menu panel */}
+        <div
+          className={`menu-mobile z-50 ${
+            isOpen ? "translate-x-0 menu-open" : "-translate-x-full"
+          } ${isClosing ? "menu-closing" : ""}`}
+        >
+        <button 
+          className="menu-close-button" 
+          onClick={handleClose} 
+          aria-label="Close menu"
+        >
+          <X className="w-6 h-6" />
+        </button>
+        <div className="menu-content">
+          <Link to="/" className="logo-mobile" onClick={handleClose}>
+            FrancOrtiz
+          </Link>
 
-          <button 
-            onClick={toggleTheme} 
-            className="p-2 rounded-full bg-transparent hover:bg-blue-400/30 dark:hover:bg-blue-800/30 transition-colors"
-          >
-            {isDarkMode ? 
-              <Sun className="w-6 h-6 nav-icon-mobile" /> : 
-              <Moon className="w-6 h-6 nav-icon-mobile" />
-            }
-          </button>
-        </div>
-
-        <div className="h-[calc(100%-4rem)] flex flex-col justify-between px-8">
-          <div className="flex flex-col space-y-12">
-            {/* Logo */}
-            <div className="nav-menu">
-              <span className="logo-mobile">FrancOrtiz</span>
-            </div>
-
-            {/* Navigation Links */}
-            <div className="flex flex-col space-y-8 nav-menu">
-              <a
-                href="/"
-                onClick={handleClose}
-                style={{"--index": 1} as React.CSSProperties}
-              >
-                Home
-              </a>
-              <a
-                href="/about"
-                onClick={handleClose}
-                style={{"--index": 2} as React.CSSProperties}
-              >
-                About
-              </a>
-              <a
-                href="/projects"
-                onClick={handleClose}
-                style={{"--index": 3} as React.CSSProperties}
-              >
-                Projects
-              </a>
-              <a
-                href="/skills"
-                onClick={handleClose}
-                style={{"--index": 4} as React.CSSProperties}
-              >
-                Skills
-              </a>
-              <a
-                href="/contact"
-                onClick={handleClose}
-                style={{"--index": 5} as React.CSSProperties}
-              >
-                Contact
-              </a>
-            </div>
+          <nav className="nav-menu">
+            <Link to="/" onClick={handleClose}>Home</Link>
+            <Link to="/about" onClick={handleClose}>About</Link>
+            <Link to="/projects" onClick={handleClose}>Projects</Link>
+            <Link to="/skills" onClick={handleClose}>Skills</Link>
+            <Link to="/contact" onClick={handleClose}>Contact</Link>
+            <Link to="/saveFiles" onClick={handleClose}>Save Files</Link>
+          </nav>
+          <div className="menu-buttons">
+            <LanguageSwitcher color="white" />
+            <button
+              onClick={toggleTheme}
+              className="navbar-theme-button"
+            >
+              {isDarkMode ? 
+                <Sun className="w-5 h-5 nav-icon" /> : 
+                <Moon className="w-5 h-5 nav-icon" />
+              }
+            </button>
           </div>
-
           {/* Footer component */}
-          <div className="mobile-menu-footer">
-            <Footer />
-          </div>
+        <div className="mobile-menu-footer">
+          <Footer />
         </div>
+
+          
+        </div>
+
+        
       </div>
     </>
   );
