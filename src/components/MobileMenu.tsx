@@ -70,8 +70,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, to
         <div className="h-[calc(100%-4rem)] flex flex-col justify-between px-8">
           <div className="flex flex-col space-y-12">
             {/* Logo */}
-            <div className="text-center">
-              <span className="logo-mobile">Francortiz</span>
+            <div className="nav-menu">
+              <span className="logo-mobile">FrancOrtiz</span>
             </div>
 
             {/* Navigation Links */}

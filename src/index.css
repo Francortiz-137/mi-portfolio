@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Cabinet+Grotesk:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -79,7 +81,6 @@ h1 {
   margin-bottom: 1rem;
   position: relative;
   display: inline-block;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   letter-spacing: -0.02em;
   font-weight: 500 !important;
   font-family: 'Space Grotesk', sans-serif !important;
@@ -666,17 +667,20 @@ nav button:focus-visible {
   transition: all 0.3s ease;
 }
 
-.nav-menu a{
+.nav-menu a {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
   color: #ffffff;
   text-decoration: none;
   transition: all 0.2s ease;
   position: relative;
   padding: 0.25rem 0.5rem;
+  letter-spacing: -0.02em;
 }
 
-.nav-menu a:hover{
+.nav-menu a:hover {
   color: #ffffff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   transform: translateY(-3px) scale(1.05);
 }
 
@@ -703,12 +707,13 @@ footer .footer-social {
 }
 
 .logo-mobile {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 4.5rem !important;
+  font-weight: 700 !important;
   color: #4834d4 !important;
   letter-spacing: -0.03em;
   transition: all 0.3s ease;
-  font-size: 4.5rem !important;
   line-height: 1 !important;
-  font-weight: 700 !important;
 }
 
 @media (min-width: 640px) {
@@ -1236,4 +1241,43 @@ footer .footer-social {
 @keyframes flip {
   0% { left: 0; }
   100% { left: 100%; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .menu-mobile .nav-menu {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .menu-mobile .mobile-menu-footer {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu-mobile .nav-menu {
+    width: 66.666667%;
+    margin-left: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .menu-mobile .mobile-menu-footer {
+    width: 66.666667%;
+    margin-left: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .menu-mobile .logo-mobile {
+    margin-left: auto;
+    width: 66.666667%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }

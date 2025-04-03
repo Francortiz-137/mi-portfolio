@@ -34,7 +34,7 @@ const HeroSection = () => {
               View Projects
             </a>
           </div>
-          <a href="/public/cv.pdf" download className="btn-secondary cursor-star hero-button flex items-center justify-center gap-2">
+          <a href="/assets/cv.pdf" download className="btn-secondary cursor-star hero-button flex items-center justify-center gap-2">
             <Download className="w-4 h-4" />
             Download CV
           </a>
