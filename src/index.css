@@ -1281,3 +1281,53 @@ footer .footer-social {
     padding-right: 2rem;
   }
 }
+
+/* About Section */
+.about-section {
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--text);
+  text-align: center;
+}
+
+.about-section .glass-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: left;
+}
+
+.about-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-alt);
+  margin-bottom: 1.5rem;
+}
+
+.dark .about-section h2 {
+  color: #ffffff;
+}
+
+.dark .about-section p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 2.5rem;
+  display: block;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  position: relative;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  font-family: 'Space Grotesk', sans-serif;
+  text-align: center;
+  margin: 4rem 0;
+}

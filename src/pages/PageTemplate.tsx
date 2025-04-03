@@ -12,9 +12,9 @@ const PageTemplate: React.FC<PageProps> = ({ title, children }) => (
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -20 }}
     transition={{ duration: 0.5 }}
-    className="p-10"
+    className="w-full max-w-4xl mx-auto px-4 pt-24"
   >
-    <h1 className="text-center text-3xl font-bold mb-8">{title}</h1>
+    <h1 className="section-title">{title}</h1>
     {children}
   </motion.div>
 );
