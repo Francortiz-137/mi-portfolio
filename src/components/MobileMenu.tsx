@@ -1,5 +1,6 @@
-import React from "react";
-import { Github, Linkedin, Mail, X, Sun, Moon } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { X, Sun, Moon } from "lucide-react";
+import Footer from "./Footer";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -9,6 +10,26 @@ interface MobileMenuProps {
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, toggleTheme }) => {
+  const [isClosing, setIsClosing] = useState(false);
+  
+  // Gestionar la animación de cierre
+  useEffect(() => {
+    if (!isOpen && isClosing) {
+      const timer = setTimeout(() => {
+        setIsClosing(false);
+      }, 300); // Duración reducida de la animación
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, isClosing]);
+  
+  // Función para cerrar con animación
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 200); // Retraso reducido antes de ejecutar onClose
+  };
+
   return (
     <>
       {/* Overlay with blur effect */}
@@ -16,23 +37,23 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, to
         className={`fixed inset-0 bg-black/30 mobile-menu-backdrop transition-opacity duration-300 z-40 ${
           isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`} 
-        onClick={onClose}
+        onClick={handleClose}
       />
       
       {/* Blue menu panel */}
       <div
         className={`menu-mobile z-50 ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+          isOpen ? "translate-x-0 menu-open" : "-translate-x-full"
+        } ${isClosing ? "menu-closing" : ""}`}
       >
         {/* Navbar area */}
         <div className="flex justify-between items-center h-16 px-4">
           <button
-            onClick={onClose}
+            onClick={handleClose}
             className="p-2 rounded-md bg-transparent hover:bg-blue-400/30 dark:hover:bg-blue-800/30 transition-colors"
             aria-label="Close menu"
           >
-            <X className="w-6 h-6 nav-icon" />
+            <X className="w-7 h-7 nav-icon-mobile" />
           </button>
 
           <button 
@@ -40,63 +61,62 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, to
             className="p-2 rounded-full bg-transparent hover:bg-blue-400/30 dark:hover:bg-blue-800/30 transition-colors"
           >
             {isDarkMode ? 
-              <Sun className="w-5 h-5 nav-icon" /> : 
-              <Moon className="w-5 h-5 nav-icon" />
+              <Sun className="w-6 h-6 nav-icon-mobile" /> : 
+              <Moon className="w-6 h-6 nav-icon-mobile" />
             }
           </button>
         </div>
 
-        <div className="h-[calc(100%-4rem)] flex flex-col justify-center px-8 space-y-12">
-          {/* Logo */}
-          <div className="text-center">
-            <span className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">Francortiz</span>
+        <div className="h-[calc(100%-4rem)] flex flex-col justify-between px-8">
+          <div className="flex flex-col space-y-12">
+            {/* Logo */}
+            <div className="text-center">
+              <span className="logo-mobile">Francortiz</span>
+            </div>
+
+            {/* Navigation Links */}
+            <div className="flex flex-col space-y-8 nav-menu">
+              <a
+                href="/"
+                onClick={handleClose}
+                style={{"--index": 1} as React.CSSProperties}
+              >
+                Home
+              </a>
+              <a
+                href="/about"
+                onClick={handleClose}
+                style={{"--index": 2} as React.CSSProperties}
+              >
+                About
+              </a>
+              <a
+                href="/projects"
+                onClick={handleClose}
+                style={{"--index": 3} as React.CSSProperties}
+              >
+                Projects
+              </a>
+              <a
+                href="/skills"
+                onClick={handleClose}
+                style={{"--index": 4} as React.CSSProperties}
+              >
+                Skills
+              </a>
+              <a
+                href="/contact"
+                onClick={handleClose}
+                style={{"--index": 5} as React.CSSProperties}
+              >
+                Contact
+              </a>
+            </div>
           </div>
 
-          {/* Navigation Links */}
-          <div className="flex flex-col space-y-8 nav-menu">
-            <a
-              href="/"
-              onClick={onClose}
-            >
-              Home
-            </a>
-            <a
-              href="/about"
-              onClick={onClose}
-            >
-              About
-            </a>
-            <a
-              href="/projects"
-              onClick={onClose}
-            >
-              Projects
-            </a>
-            <a
-              href="/skills"
-              onClick={onClose}
-            >
-              Skills
-            </a>
-            <a
-              href="/contact"
-              onClick={onClose}
-            >
-              Contact
-            </a>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex justify-center space-x-6">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-link">
-              <Github className="w-8 h-8 text-white" />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link">
-              <Linkedin className="w-8 h-8 text-white" />
-            </a>
-            <a href="mailto:your.email@example.com" className="social-link">
-              <Mail className="w-8 h-8 text-white" />
-            </a>
+          {/* Footer component */}
+          <div className="mobile-menu-footer">
+            <Footer />
           </div>
         </div>
       </div>

@@ -43,13 +43,13 @@ const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
 
   return (
     <>
-      <nav className={`w-full fixed top-0 left-0 right-0 z-50 bg-transparent ${isMenuOpen ? 'invisible' : 'visible'}`}>
-        <div className="w-full px-2 sm:px-4 bg-transparent">
-          <div className="flex justify-between items-center h-16 bg-transparent">
+      <nav className={`navbar ${isMenuOpen ? 'invisible' : 'visible'}`}>
+        <div className="navbar-container">
+          <div className="navbar-content">
             {/* Menu Button */}
             <button
               onClick={toggleMenu}
-              className="p-2 mx-2 rounded-md hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-colors bg-transparent"
+              className="navbar-button"
               aria-label="Toggle menu"
             >
               <Menu className="w-6 h-6 nav-icon" />
@@ -58,7 +58,7 @@ const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
             {/* Theme Toggle */}
             <button 
               onClick={toggleTheme} 
-              className="p-2 mx-2 rounded-full hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-colors bg-transparent"
+              className="navbar-theme-button"
             >
               {isDarkMode ? 
                 <Sun className="w-5 h-5 nav-icon" /> : 
