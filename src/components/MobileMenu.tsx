@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Sun, Moon, X } from 'lucide-react';
+import { X, Sun, Moon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import MenuAnimation from './MenuAnimation';
 import './MobileMenu.css';
 
 interface MobileMenuProps {
@@ -14,49 +14,48 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, toggleTheme }) => {
   const { t, i18n } = useTranslation();
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
+  const toggleLanguage = () => {
+    i18n.changeLanguage(i18n.language === 'en' ? 'es' : 'en');
   };
 
   return (
-    <div className={`menu-mobile ${isOpen ? 'open' : ''}`}>
-      <button className="close-button" onClick={onClose}>
-        <X className="w-6 h-6" />
-      </button>
+    <MenuAnimation isOpen={isOpen}>
       <div className="menu-content">
-        <Link to="/" className="logo-mobile" onClick={onClose}>
-          FrancOrtiz
-        </Link>
+        <button className="close-button" onClick={onClose}>
+          <X size={24} />
+        </button>
+        
+        <div className="logo-mobile">FrancOrtiz</div>
+        
         <nav className="nav-menu">
-          <Link to="/" onClick={onClose}>{t('nav.home')}</Link>
-          <Link to="/about" onClick={onClose}>{t('nav.about')}</Link>
-          <Link to="/projects" onClick={onClose}>{t('nav.projects')}</Link>
-          <Link to="/skills" onClick={onClose}>{t('nav.skills')}</Link>
-          <Link to="/contact" onClick={onClose}>{t('nav.contact')}</Link>
-          <Link to="/save-files" onClick={onClose}>{t('nav.saveFiles')}</Link>
+          <a href="#home" onClick={onClose}>{t('nav.home')}</a>
+          <a href="#about" onClick={onClose}>{t('nav.about')}</a>
+          <a href="#projects" onClick={onClose}>{t('nav.projects')}</a>
+          <a href="#contact" onClick={onClose}>{t('nav.contact')}</a>
         </nav>
+
         <div className="menu-buttons">
-          <div className="language-buttons">
+          <div className="language-switcher">
             <button 
-              onClick={() => changeLanguage('en')}
               className={`language-button ${i18n.language === 'en' ? 'active' : ''}`}
+              onClick={toggleLanguage}
             >
               EN
             </button>
             <span className="language-separator">|</span>
             <button 
-              onClick={() => changeLanguage('es')}
               className={`language-button ${i18n.language === 'es' ? 'active' : ''}`}
+              onClick={toggleLanguage}
             >
               ESP
             </button>
           </div>
-          <button onClick={toggleTheme} className="theme-button">
-            {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          <button className="theme-button" onClick={toggleTheme}>
+            {isDarkMode ? <Moon size={24} /> : <Sun size={24} />}
           </button>
         </div>
       </div>
-    </div>
+    </MenuAnimation>
   );
 };
 
