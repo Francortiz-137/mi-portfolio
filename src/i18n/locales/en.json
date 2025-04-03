@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Hi, I'm",
+    "subtitle": "Full Stack Developer",
+    "description": "Passionate about creating innovative and efficient technological solutions. With experience in web and backend development, I specialize in building modern applications that deliver an excellent user experience.",
+    "cta": "View Projects",
+    "contact": "Contact Me"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I am Franco Ortiz Cabrera, a fullstack developer with experience in technologies such as Angular, Spring Boot, and Node.js. Graduated from Pontificia Universidad Católica de Valparaíso in 2020, I specialize in creating efficient and scalable applications, using both relational (MySQL) and non-relational (MongoDB) databases.\n\nMy experience includes working at Accenture Chile on a software development project, where I implemented solutions that improved user retention and increased customer satisfaction. In my daily work, I use agile methodologies to ensure effective collaboration and the delivery of high-impact results.\n\nI am passionate about continuous learning and contributing to innovative solutions, with a focus on improving user experience and optimizing technological processes. I seek opportunities that allow me to continue growing professionally in web and backend application development."
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Some of my recent work",
+    "description": "Explore a selection of projects that showcase my experience in web and backend development. Each project represents a unique challenge and an opportunity to apply innovative solutions.",
+    "view": "View Project",
+    "technologies": "Technologies used"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's work together",
+    "description": "Do you have a project in mind or are you looking for a developer for your team? I'm available to collaborate on new challenges and opportunities. Feel free to contact me to discuss how we can work together.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "success": "Message sent successfully!",
+    "error": "There was an error sending the message. Please try again."
+  }
+} 

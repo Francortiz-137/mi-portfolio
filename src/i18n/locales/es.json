@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre Mí",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Hola, soy",
+    "subtitle": "Desarrollador Full Stack",
+    "description": "Apasionado por crear soluciones tecnológicas innovadoras y eficientes. Con experiencia en desarrollo web y backend, me especializo en construir aplicaciones modernas que ofrecen una excelente experiencia de usuario.",
+    "cta": "Ver Proyectos",
+    "contact": "Contáctame"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "description": "Soy Franco Ortiz Cabrera, desarrollador fullstack con experiencia en tecnologías como Angular, Spring Boot y Node.js. Graduado de la Pontificia Universidad Católica de Valparaíso en 2020, me especializo en crear aplicaciones eficientes y escalables, utilizando tanto bases de datos relacionales (MySQL) como no relacionales (MongoDB).\n\nMi experiencia incluye trabajar en Accenture Chile en un proyecto de desarrollo de software, donde implementé soluciones que mejoraron la retención de usuarios y aumentaron la satisfacción del cliente. En mi día a día, utilizo metodologías ágiles para asegurar una colaboración efectiva y la entrega de resultados de alto impacto.\n\nMe apasiona seguir aprendiendo y contribuir a soluciones innovadoras, con un enfoque en mejorar la experiencia del usuario y optimizar procesos tecnológicos. Busco oportunidades que me permitan continuar creciendo profesionalmente en el desarrollo de aplicaciones web y backend."
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Algunos de mis trabajos más recientes",
+    "description": "Explora una selección de proyectos que demuestran mi experiencia en desarrollo web y backend. Cada proyecto representa un desafío único y una oportunidad para aplicar soluciones innovadoras.",
+    "view": "Ver Proyecto",
+    "technologies": "Tecnologías utilizadas"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Trabajemos juntos",
+    "description": "¿Tienes un proyecto en mente o buscas un desarrollador para tu equipo? Estoy disponible para colaborar en nuevos desafíos y oportunidades. No dudes en contactarme para discutir cómo podemos trabajar juntos.",
+    "name": "Nombre",
+    "email": "Correo",
+    "message": "Mensaje",
+    "send": "Enviar Mensaje",
+    "success": "¡Mensaje enviado con éxito!",
+    "error": "Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo."
+  }
+} 
