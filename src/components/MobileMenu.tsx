@@ -21,7 +21,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, to
       
       {/* Blue menu panel */}
       <div
-        className={`fixed top-0 left-0 w-full h-screen bg-blue-500 dark:bg-blue-900 shadow-xl transform transition-transform duration-300 ease-in-out mobile-menu z-50 ${
+        className={`menu-mobile z-50 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -53,38 +53,33 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, to
           </div>
 
           {/* Navigation Links */}
-          <div className="flex flex-col space-y-8 text-center">
+          <div className="flex flex-col space-y-8 nav-menu">
             <a
               href="/"
-              className="text-2xl sm:text-3xl md:text-4xl text-white hover:text-blue-100 transition-colors"
               onClick={onClose}
             >
               Home
             </a>
             <a
               href="/about"
-              className="text-2xl sm:text-3xl md:text-4xl text-white hover:text-blue-100 transition-colors"
               onClick={onClose}
             >
               About
             </a>
             <a
               href="/projects"
-              className="text-2xl sm:text-3xl md:text-4xl text-white hover:text-blue-100 transition-colors"
               onClick={onClose}
             >
               Projects
             </a>
             <a
               href="/skills"
-              className="text-2xl sm:text-3xl md:text-4xl text-white hover:text-blue-100 transition-colors"
               onClick={onClose}
             >
               Skills
             </a>
             <a
               href="/contact"
-              className="text-2xl sm:text-3xl md:text-4xl text-white hover:text-blue-100 transition-colors"
               onClick={onClose}
             >
               Contact
