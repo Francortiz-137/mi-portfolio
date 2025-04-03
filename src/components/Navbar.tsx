@@ -1,6 +1,7 @@
 import React from "react";
 import { Menu, Sun, Moon } from "lucide-react";
 import MobileMenu from "./MobileMenu";
+import { useTheme } from "../context/ThemeContext";
 
 interface NavbarProps {
   isMenuOpen: boolean;
@@ -8,33 +9,10 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
-  const [isDarkMode, setIsDarkMode] = React.useState(() => {
-    // Verificar si hay una preferencia guardada
-    const saved = localStorage.getItem('darkMode');
-    if (saved !== null) {
-      return JSON.parse(saved);
-    }
-    // Verificar la preferencia del sistema
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
-
-  React.useEffect(() => {
-    // Guardar la preferencia en localStorage
-    localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
-    // Aplicar la clase dark al documento
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDarkMode]);
+  const { theme, toggleTheme } = useTheme();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
   };
 
   const closeMenu = () => {
@@ -60,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
               onClick={toggleTheme} 
               className="navbar-theme-button"
             >
-              {isDarkMode ? 
+              {theme === 'dark' ? 
                 <Sun className="w-5 h-5 nav-icon" /> : 
                 <Moon className="w-5 h-5 nav-icon" />
               }
@@ -73,7 +51,7 @@ const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
       <MobileMenu 
         isOpen={isMenuOpen} 
         onClose={closeMenu} 
-        isDarkMode={isDarkMode}
+        isDarkMode={theme === 'dark'}
         toggleTheme={toggleTheme}
       />
     </>

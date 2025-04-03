@@ -12,7 +12,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     // Verificar tema guardado o preferencia del sistema
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
       return 'dark';
     } else {
@@ -22,13 +22,16 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   });
 
   useEffect(() => {
+    // Limpiar keys redundantes
+    localStorage.removeItem('darkMode');
+    
     // Aplicar el tema cuando cambia
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';
+      localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
-      localStorage.theme = 'light';
+      localStorage.setItem('theme', 'light');
     }
   }, [theme]);
 
@@ -37,10 +40,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       const newTheme = prevTheme === 'light' ? 'dark' : 'light';
       if (newTheme === 'dark') {
         document.documentElement.classList.add('dark');
-        localStorage.theme = 'dark';
+        localStorage.setItem('theme', 'dark');
       } else {
         document.documentElement.classList.remove('dark');
-        localStorage.theme = 'light';
+        localStorage.setItem('theme', 'light');
       }
       return newTheme;
     });
