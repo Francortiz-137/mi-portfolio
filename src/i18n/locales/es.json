@@ -3,7 +3,9 @@
     "home": "Inicio",
     "about": "Sobre Mí",
     "projects": "Proyectos",
-    "contact": "Contacto"
+    "skills": "Habilidades",
+    "contact": "Contacto",
+    "saveFiles": "Datos Guardados"
   },
   "hero": {
     "title": "Hola, soy",

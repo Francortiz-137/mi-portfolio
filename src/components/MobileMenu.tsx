@@ -12,7 +12,7 @@ interface MobileMenuProps {
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, toggleTheme }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -28,12 +28,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, to
           FrancOrtiz
         </Link>
         <nav className="nav-menu">
-          <Link to="/" onClick={onClose}>Home</Link>
-          <Link to="/about" onClick={onClose}>About</Link>
-          <Link to="/projects" onClick={onClose}>Projects</Link>
-          <Link to="/skills" onClick={onClose}>Skills</Link>
-          <Link to="/contact" onClick={onClose}>Contact</Link>
-          <Link to="/save-files" onClick={onClose}>Save Files</Link>
+          <Link to="/" onClick={onClose}>{t('nav.home')}</Link>
+          <Link to="/about" onClick={onClose}>{t('nav.about')}</Link>
+          <Link to="/projects" onClick={onClose}>{t('nav.projects')}</Link>
+          <Link to="/skills" onClick={onClose}>{t('nav.skills')}</Link>
+          <Link to="/contact" onClick={onClose}>{t('nav.contact')}</Link>
+          <Link to="/save-files" onClick={onClose}>{t('nav.saveFiles')}</Link>
         </nav>
         <div className="menu-buttons">
           <div className="language-buttons">

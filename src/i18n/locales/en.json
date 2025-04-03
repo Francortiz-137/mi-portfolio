@@ -3,7 +3,9 @@
     "home": "Home",
     "about": "About",
     "projects": "Projects",
-    "contact": "Contact"
+    "skills": "Skills",
+    "contact": "Contact",
+    "saveFiles": "Save Files"
   },
   "hero": {
     "title": "Hi, I'm",
