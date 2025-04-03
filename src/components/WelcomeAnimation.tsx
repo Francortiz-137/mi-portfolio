@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './WelcomeAnimation.css';
 
 const WelcomeAnimation: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -23,11 +24,6 @@ const WelcomeAnimation: React.FC = () => {
       </div>
       <div className="welcome-sun">
         <div className="disc"></div>
-        <div id="halfclip">
-          <div className="halfcircle" id="clipped"></div>
-        </div>
-        <div className="halfcircle" id="fixed"></div>
-        <div className="moon-fill"></div>
         <span className="light light1"><span className="beam"></span></span>
         <span className="light light2"><span className="beam"></span></span>
         <span className="light light3"><span className="beam"></span></span>
