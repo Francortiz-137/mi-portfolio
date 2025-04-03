@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { X, Sun, Moon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
@@ -15,27 +15,22 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, toggleTheme }) => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-  const [isNavigating, setIsNavigating] = useState(false);
 
   const toggleLanguage = () => {
     i18n.changeLanguage(i18n.language === 'en' ? 'es' : 'en');
   };
 
   const handleNavigation = (path: string) => {
-    setIsNavigating(true);
+    // Primero navegamos a la nueva página
     navigate(path);
-    // Iniciar la animación de cierre después de un pequeño delay
+    // Luego iniciamos la animación de cierre
     setTimeout(() => {
       onClose();
-      // Resetear el estado de navegación después de que la animación termine
-      setTimeout(() => {
-        setIsNavigating(false);
-      }, 1000);
     }, 100);
   };
 
   return (
-    <MenuAnimation isOpen={isOpen && !isNavigating}>
+    <MenuAnimation isOpen={isOpen}>
       <div className="menu-content">
         <button className="close-button" onClick={onClose}>
           <X size={24} />
