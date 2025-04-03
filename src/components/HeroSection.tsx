@@ -23,7 +23,7 @@ const HeroSection = () => {
             <span>Fullstack</span>
             <span>Backend</span>
             <span>Frontend</span>
-          </span> {t('hero.subtitle')}
+          </span> <br/> {t('hero.subtitle')}
         </h1>
         <p className="text-sm sm:text-lg md:text-xl mb-6 sm:mb-10 subtitle" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
           {t('hero.description')}
