@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
 import PageTemplate from "./PageTemplate";
+import { useTranslation } from 'react-i18next';
 
-const Skills: React.FC = () => (
-  <PageTemplate title="Habilidades">
+const Skills: React.FC = () => {
+    const { t } = useTranslation();
+
+    return (
+  <PageTemplate title={t('skills.title')}>
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -41,6 +45,7 @@ const Skills: React.FC = () => (
       </div>
     </motion.div>
   </PageTemplate>
-);
+    );
+};
 
 export default Skills;

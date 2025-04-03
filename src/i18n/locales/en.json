@@ -23,6 +23,15 @@
     "view": "View Project",
     "technologies": "Technologies used"
   },
+  "skills":  {
+        "title": "Skills",
+        "description": "My skills and favorite technologies",
+        "languages": "Languages",
+        "frameworks": "Frameworks",
+        "databases": "Databases",
+        "tools": "Tools",
+        "other": "Others"
+    },
   "contact": {
     "title": "Contact",
     "subtitle": "Let's work together",
