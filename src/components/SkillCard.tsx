@@ -45,11 +45,13 @@ const SkillCard: React.FC<SkillCardProps> = ({ name, logo, projectCount, categor
           />
         )}
         <h3 className="text-lg font-semibold">{name}</h3>
+        {projectCount>0 && (
         <div className="flex items-center space-x-1">
           <span className="text-sm text-gray-600 dark:text-gray-400">
             {projectCount} {projectCount === 1 ? t('skills.project') : t('skills.projects')}
           </span>
         </div>
+        )}
       </div>
     </motion.div>
   );
