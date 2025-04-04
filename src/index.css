@@ -1178,3 +1178,81 @@ input, textarea {
   border-color: rgba(255, 255, 255, 0.3);
   outline: none;
 }
+
+/* Profile image styles */
+.profile-image-container {
+  position: relative;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.dark .profile-image-container {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.profile-image-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dark .profile-image-container:hover {
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+}
+
+.profile-image-container img {
+  transition: transform 0.3s ease;
+}
+
+.profile-image-container:hover img {
+  transform: scale(1.1);
+}
+
+/* Skills styles */
+.skill-category {
+  margin-bottom: 1rem;
+}
+
+.category-button {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.category-button:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1));
+  transform: translateY(-2px);
+}
+
+.dark .category-button {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(10, 10, 10, 0.8));
+  border: 1px solid rgba(74, 144, 226, 0.2);
+}
+
+.dark .category-button:hover {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(10, 10, 10, 0.9));
+}
+
+.tech-item {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 500;
+  cursor: default;
+}
+
+.tech-item:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1));
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+.dark .tech-item {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(10, 10, 10, 0.8));
+  border: 1px solid rgba(74, 144, 226, 0.2);
+}
+
+.dark .tech-item:hover {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(10, 10, 10, 0.9));
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
