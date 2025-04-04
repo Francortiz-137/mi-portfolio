@@ -16,7 +16,7 @@
   },
   "about": {
     "title": "About Me",
-    "description": "I am Franco Ortiz Cabrera, a fullstack developer with experience in technologies such as Angular, Spring Boot, and Node.js. Graduated from Pontificia Universidad Católica de Valparaíso in 2020, I specialize in creating efficient and scalable applications, using both relational (MySQL) and non-relational (MongoDB) databases.\n\nMy experience includes working at Accenture Chile on a software development project, where I implemented solutions that improved user retention and increased customer satisfaction. In my daily work, I use agile methodologies to ensure effective collaboration and the delivery of high-impact results.\n\nI am passionate about continuous learning and contributing to innovative solutions, with a focus on improving user experience and optimizing technological processes. I seek opportunities that allow me to continue growing professionally in web and backend application development."
+    "description": "I am Franco Ortiz Cabrera, a fullstack developer with experience in technologies such as Angular, Spring Boot, and Node.js. Graduated from Pontificia Universidad Católica de Valparaíso, I specialize in creating efficient and scalable applications, using both relational (MySQL) and non-relational (MongoDB) databases.\n\nIn my daily work, I use agile methodologies to ensure effective collaboration and the delivery of high-impact results.\n\nI am passionate about continuous learning and contributing to innovative solutions, with a focus on improving user experience and optimizing technological processes. I seek opportunities that allow me to continue growing professionally in web and backend application development."
   },
   "projects": {
     "title": "Projects",
