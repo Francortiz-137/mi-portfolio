@@ -13,11 +13,30 @@ const Skills: React.FC = () => {
   // Calcular el contador de proyectos por tecnología
   const technologyCounts = useMemo(() => {
     const counts: { [key: string]: number } = {};
+    
+    // Inicializar todos los contadores en 0
+    const allTechnologies = [
+      'HTML', 'CSS', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'SASS', 'React', 'Angular',
+      'Java', 'Python', 'MySQL', 'PostgreSQL', 'MongoDB', 'Spring Boot',
+      'Figma', 'Git', 'VS Code', 'Docker', 'Postman', 'Jira'
+    ];
+    
+    allTechnologies.forEach(tech => {
+      counts[tech] = 0;
+    });
+    
+    // Contar proyectos por tecnología
     projects.forEach(project => {
       project.technologies.forEach(tech => {
-        counts[tech] = (counts[tech] || 0) + 1;
+        if (counts.hasOwnProperty(tech)) {
+          counts[tech]++;
+        } else {
+          // Para tecnologías que no están en nuestra lista predefinida
+          counts[tech] = 1;
+        }
       });
     });
+    
     return counts;
   }, []);
 

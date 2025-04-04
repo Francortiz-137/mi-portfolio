@@ -32,7 +32,11 @@
         "frameworks": "Frameworks",
         "databases": "Bases de datos",
         "tools": "Herramientas",
-        "other": "Otros"
+        "other": "Otros",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "project": "proyecto",
+        "projects": "proyectos"
     },
   "contact": {
     "title": "Contacto",
