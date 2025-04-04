@@ -7,10 +7,22 @@ import HeroSection from '../components/HeroSection';
 
 const Home = () => {
   useEffect(() => {
+    // Reinicializar AOS cuando el componente se monta
+    AOS.refresh();
+    
+    // Configurar AOS con opciones adecuadas
     AOS.init({
       duration: 1000,
       once: true,
+      offset: 50,
+      delay: 100,
+      easing: 'ease-in-out',
     });
+    
+    // Limpiar AOS cuando el componente se desmonta
+    return () => {
+      AOS.refresh();
+    };
   }, []);
 
   return (

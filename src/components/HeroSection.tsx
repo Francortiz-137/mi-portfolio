@@ -1,18 +1,9 @@
 import React from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { Download } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 
 const HeroSection = () => {
   const { t } = useTranslation();
-
-  React.useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-    });
-  }, []);
 
   return (
     <section className="hero-section">
