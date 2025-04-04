@@ -1,79 +1,91 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 import PageTemplate from "./PageTemplate";
 import { useTranslation } from 'react-i18next';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import SkillCard from '../components/SkillCard';
-import { projects } from '../data/projects';
+
+// Importar imágenes de habilidades
+import htmlLogo from '../assets/skills/html.png';
+import cssLogo from '../assets/skills/css.png';
+import jsLogo from '../assets/skills/js.png';
+import tsLogo from '../assets/skills/ts.svg';
+import tailwindLogo from '../assets/skills/tailwind.svg';
+import sassLogo from '../assets/skills/sass.png';
+import reactLogo from '../assets/skills/react.svg';
+import angularLogo from '../assets/skills/angular.png';
+import javaLogo from '../assets/skills/java-4.svg';
+import pythonLogo from '../assets/skills/python-5.svg';
+import mysqlLogo from '../assets/skills/mysql-logo-pure.svg';
+import postgresqlLogo from '../assets/skills/postgresql.svg';
+import mongodbLogo from '../assets/skills/mongodb-icon-1.svg';
+import springLogo from '../assets/skills/spring-3.svg';
+import figmaLogo from '../assets/skills/figma.svg';
+import gitLogo from '../assets/skills/git.svg';
+import vscodeLogo from '../assets/skills/vscode.svg';
+import dockerLogo from '../assets/skills/docker.svg';
+import postmanLogo from '../assets/skills/postman.svg';
+import jiraLogo from '../assets/skills/jira.svg';
+
+// Mock project data for counting
+const projects = [
+  { id: 1, technologies: ['React', 'TypeScript', 'Tailwind CSS'] },
+  { id: 2, technologies: ['Angular', 'Java', 'Spring Boot'] },
+  { id: 3, technologies: ['Python', 'MongoDB'] },
+  { id: 4, technologies: ['React', 'Node.js', 'PostgreSQL'] },
+  { id: 5, technologies: ['HTML', 'CSS', 'JavaScript'] },
+];
 
 const Skills: React.FC = () => {
   const { t } = useTranslation();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [techCounts, setTechCounts] = useState<Record<string, number>>({});
 
-  // Calcular el contador de proyectos por tecnología
-  const technologyCounts = useMemo(() => {
-    const counts: { [key: string]: number } = {};
-    
-    // Inicializar todos los contadores en 0
-    const allTechnologies = [
-      'HTML', 'CSS', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'SASS', 'React', 'Angular',
-      'Java', 'Python', 'MySQL', 'PostgreSQL', 'MongoDB', 'Spring Boot',
-      'Figma', 'Git', 'VS Code', 'Docker', 'Postman', 'Jira'
-    ];
-    
-    allTechnologies.forEach(tech => {
-      counts[tech] = 0;
-    });
-    
-    // Contar proyectos por tecnología
+  useEffect(() => {
+    // Count projects per technology
+    const counts: Record<string, number> = {};
     projects.forEach(project => {
       project.technologies.forEach(tech => {
-        if (counts.hasOwnProperty(tech)) {
-          counts[tech]++;
-        } else {
-          // Para tecnologías que no están en nuestra lista predefinida
-          counts[tech] = 1;
-        }
+        counts[tech] = (counts[tech] || 0) + 1;
       });
     });
-    
-    return counts;
+    setTechCounts(counts);
   }, []);
 
   const categories = {
     frontend: {
       title: t('skills.frontend'),
       technologies: [
-        { name: 'HTML', logo: '/assets/skills/html.svg', count: technologyCounts['HTML'] || 0 },
-        { name: 'CSS', logo: '/assets/skills/css.svg', count: technologyCounts['CSS'] || 0 },
-        { name: 'JavaScript', logo: '/assets/skills/javascript.svg', count: technologyCounts['JavaScript'] || 0 },
-        { name: 'TypeScript', logo: '/assets/skills/typescript.svg', count: technologyCounts['TypeScript'] || 0 },
-        { name: 'Tailwind CSS', logo: '/assets/skills/tailwind.svg', count: technologyCounts['Tailwind CSS'] || 0 },
-        { name: 'SASS', logo: '/assets/skills/sass.svg', count: technologyCounts['SASS'] || 0 },
-        { name: 'React', logo: '/assets/skills/react.svg', count: technologyCounts['React'] || 0 },
-        { name: 'Angular', logo: '/assets/skills/angular.svg', count: technologyCounts['Angular'] || 0 }
+        { name: 'HTML', logo: htmlLogo },
+        { name: 'CSS', logo: cssLogo },
+        { name: 'JavaScript', logo: jsLogo },
+        { name: 'TypeScript', logo: tsLogo },
+        { name: 'Tailwind CSS', logo: tailwindLogo },
+        { name: 'SASS', logo: sassLogo },
+        { name: 'React', logo: reactLogo },
+        { name: 'Angular', logo: angularLogo },
       ]
     },
     backend: {
       title: t('skills.backend'),
       technologies: [
-        { name: 'Java', logo: '/assets/skills/java.svg', count: technologyCounts['Java'] || 0 },
-        { name: 'Python', logo: '/assets/skills/python.svg', count: technologyCounts['Python'] || 0 },
-        { name: 'MySQL', logo: '/assets/skills/mysql.svg', count: technologyCounts['MySQL'] || 0 },
-        { name: 'PostgreSQL', logo: '/assets/skills/postgresql.svg', count: technologyCounts['PostgreSQL'] || 0 },
-        { name: 'MongoDB', logo: '/assets/skills/mongodb.svg', count: technologyCounts['MongoDB'] || 0 },
-        { name: 'Spring Boot', logo: '/assets/skills/spring.svg', count: technologyCounts['Spring Boot'] || 0 }
+        { name: 'Java', logo: javaLogo },
+        { name: 'Python', logo: pythonLogo },
+        { name: 'MySQL', logo: mysqlLogo },
+        { name: 'PostgreSQL', logo: postgresqlLogo },
+        { name: 'MongoDB', logo: mongodbLogo },
+        { name: 'Spring Boot', logo: springLogo },
       ]
     },
     tools: {
       title: t('skills.tools'),
       technologies: [
-        { name: 'Figma', logo: '/assets/skills/figma.svg', count: technologyCounts['Figma'] || 0 },
-        { name: 'Git', logo: '/assets/skills/git.svg', count: technologyCounts['Git'] || 0 },
-        { name: 'VS Code', logo: '/assets/skills/vscode.svg', count: technologyCounts['VS Code'] || 0 },
-        { name: 'Docker', logo: '/assets/skills/docker.svg', count: technologyCounts['Docker'] || 0 },
-        { name: 'Postman', logo: '/assets/skills/postman.svg', count: technologyCounts['Postman'] || 0 },
-        { name: 'Jira', logo: '/assets/skills/jira.svg', count: technologyCounts['Jira'] || 0 }
+        { name: 'Figma', logo: figmaLogo },
+        { name: 'Git', logo: gitLogo },
+        { name: 'VS Code', logo: vscodeLogo },
+        { name: 'Docker', logo: dockerLogo },
+        { name: 'Postman', logo: postmanLogo },
+        { name: 'Jira', logo: jiraLogo },
       ]
     }
   };
@@ -104,27 +116,24 @@ const Skills: React.FC = () => {
                     {activeCategory === key ? <ChevronUp /> : <ChevronDown />}
                   </button>
                   
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      height: activeCategory === key ? 'auto' : 0,
-                      opacity: activeCategory === key ? 1 : 0
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4">
+                  {activeCategory === key && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-4"
+                    >
                       {category.technologies.map((tech) => (
                         <SkillCard
                           key={tech.name}
                           name={tech.name}
                           logo={tech.logo}
-                          projectCount={tech.count}
+                          projectCount={techCounts[tech.name] || 0}
                           category={key}
                         />
                       ))}
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                  )}
                 </div>
               ))}
             </div>
