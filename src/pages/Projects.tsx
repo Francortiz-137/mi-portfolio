@@ -7,6 +7,7 @@ import { projects, Project } from '../data/projects';
 import { Github, ExternalLink, X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
+import noImage from "../assets/no-image.svg";
 
 const Projects: React.FC = () => {
   const { t } = useTranslation();
@@ -62,13 +63,20 @@ const Projects: React.FC = () => {
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
                 className="custom-project-card"
               >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover"
-                />
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={project.image || noImage}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = noImage;
+                    }}
+                  />
+                </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                   <p className="project-description mb-4">
