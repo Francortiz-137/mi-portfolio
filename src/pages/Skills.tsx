@@ -4,6 +4,7 @@ import PageTemplate from "./PageTemplate";
 import { useTranslation } from 'react-i18next';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import SkillCard from '../components/SkillCard';
+import { projects } from '../data/projects';
 
 // Importar imágenes de habilidades
 import htmlLogo from '../assets/skills/html.png';
@@ -27,15 +28,6 @@ import dockerLogo from '../assets/skills/docker.svg';
 import postmanLogo from '../assets/skills/postman.svg';
 import jiraLogo from '../assets/skills/jira.svg';
 
-// Mock project data for counting
-const projects = [
-  { id: 1, technologies: ['React', 'TypeScript', 'Tailwind CSS'] },
-  { id: 2, technologies: ['Angular', 'Java', 'Spring Boot'] },
-  { id: 3, technologies: ['Python', 'MongoDB'] },
-  { id: 4, technologies: ['React', 'Node.js', 'PostgreSQL'] },
-  { id: 5, technologies: ['HTML', 'CSS', 'JavaScript'] },
-];
-
 const Skills: React.FC = () => {
   const { t } = useTranslation();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -44,11 +36,30 @@ const Skills: React.FC = () => {
   useEffect(() => {
     // Count projects per technology
     const counts: Record<string, number> = {};
+    
+    // Initialize all technology counters to 0
+    const allTechnologies = [
+      'HTML', 'CSS', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'SASS', 'React', 'Angular',
+      'Java', 'Python', 'MySQL', 'PostgreSQL', 'MongoDB', 'Spring Boot',
+      'Figma', 'Git', 'VS Code', 'Docker', 'Postman', 'Jira', 'Node.js', 'Express', 'JWT', 'Framer Motion'
+    ];
+    
+    allTechnologies.forEach(tech => {
+      counts[tech] = 0;
+    });
+    
+    // Count projects per technology
     projects.forEach(project => {
       project.technologies.forEach(tech => {
-        counts[tech] = (counts[tech] || 0) + 1;
+        if (counts.hasOwnProperty(tech)) {
+          counts[tech]++;
+        } else {
+          // For technologies not in our predefined list
+          counts[tech] = 1;
+        }
       });
     });
+    
     setTechCounts(counts);
   }, []);
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu, Sun, Moon } from "lucide-react";
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../contexts/ThemeContext";
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
 

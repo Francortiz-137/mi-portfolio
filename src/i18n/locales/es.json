@@ -23,7 +23,12 @@
     "subtitle": "Algunos de mis trabajos más recientes",
     "description": "Explora una selección de proyectos que demuestran mi experiencia en desarrollo web y backend. Cada proyecto representa un desafío único y una oportunidad para aplicar soluciones innovadoras.",
     "view": "Ver Proyecto",
-    "technologies": "Tecnologías utilizadas"
+    "technologies": "Tecnologías utilizadas",
+    "filteredBy": "Filtrado por",
+    "clearFilter": "Limpiar filtro",
+    "viewAllSkills": "Ver todas las habilidades",
+    "noProjectsFound": "No se encontraron proyectos con esta tecnología",
+    "showAllProjects": "Mostrar todos los proyectos"
   },
     "skills":  {
         "title": "Habilidades",
