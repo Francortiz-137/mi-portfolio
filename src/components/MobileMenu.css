@@ -32,11 +32,10 @@
   justify-content: center;
   height: 100vh;
   padding: 2rem;
-  position: relative;
+  position: absolute;
   z-index: 52;
   width: 100%;
   max-width: 600px;
-  margin: 0;
 }
 
 .menu-mobile.open .menu-content {
@@ -195,6 +194,7 @@
   .menu-content {
     align-items: center;
     margin: 0 auto;
+    right: calc(100vw/2);
   }
 
   .nav-menu {
