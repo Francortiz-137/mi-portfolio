@@ -63,7 +63,7 @@
 
 .nav-menu .nav-link {
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 500;
   text-align: left;
   transition: all 0.3s ease;
@@ -194,7 +194,9 @@
   .menu-content {
     align-items: center;
     margin: 0 auto;
-    right: calc(100vw/2);
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
   }
 
   .nav-menu {

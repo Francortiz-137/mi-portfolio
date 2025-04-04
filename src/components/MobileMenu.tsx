@@ -33,10 +33,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, isDarkMode, to
     <MenuAnimation isOpen={isOpen}>
       <div className="menu-content">
         <button className="close-button" onClick={onClose}>
-          <X size={24} />
+          <X size={64} />
         </button>
         
-        <div className="logo-mobile">FrancOrtiz</div>
+        <div className="text-xl font-bold logo-mobile">
+          <span className="block sm:hidden">FO</span>
+          <span className="hidden sm:block">FrancOrtiz</span>
+        </div>
         
         <nav className="nav-menu">
           <button onClick={() => handleNavigation('/')} className="nav-link">
